@@ -1,0 +1,16 @@
+import mysql.connector
+db_config = {
+        host : 'localhost',
+       user : 'root',
+       password : 'root',
+       database : 'flask',}
+db = mysql.connector.connect(**db_config)
+cursor = db.cursor()
+create_table=('''
+             
+             CREATE TABLE IF NOT EXISTS user(id INT PRIMARY KEY NOT NULL AUTOINCREMENT, username VARCHAR(225),password VARCHAR(50));
+        '''             )
+cursor.execute(create_table)
+db.commit()
+cursor.close()
+

@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{%block body%}
+   
+    <div class="flash-messages">
+        {%for message in get_flashed_messages()%}
+            <div class="flash-message success danger">{{ msg }}</div>
+        {%endfor%}
+    </div>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Contact</th>
+                <th>email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for row in data %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>     
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[6]}}</td>
+         </tr>
+         {% endfor %}
+        </tbody>
+
+
+    </table>
+    <a class="backlink" href="/reception/add"> <i class="bi bi-box-arrow-left"></i>&nbsp;Add Data</a>
+    {%endblock%}   

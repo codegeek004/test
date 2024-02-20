@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{%block title%}Delete data{%endblock%}
+{%block body%}
+    <h1>Delete data</h1>
+    {%with messages=get_flashed_messages(with_categories=true) %}
+    {%if messages%}
+    <div class="flash-messages">    
+        {%for category,message in messages%}
+        <div class="flash-message {{category}}">
+            {{message}}
+        </div>
+        {%endfor%}
+    </div>
+    {%endif%}
+    {%endwith%}
+
+    <form method="POST" action="{{url_for('reception.delete_data',id=id)}}">
+        <p>Are you sure you want to delete the following data</p>
+        <p>Name: {{reception_data[0]}}</p>
+        <p>Age: {{reception_data[1]}}</p>
+        <p>Contact: {{reception_data[2]}}</p>
+        <p>email: {{reception_data[3]}}</p>
+        <p>Address: {{reception_data[4]}}</p>
+        <button type="submit">Delete data</button>
+    </form>
+    {% endblock %}
+        <a class="backlink" href="/reception"><i class="bi bi-box-arrow-left">Back to reception</i>&nbsp;</a>
+
+

@@ -1,0 +1,55 @@
+CREATE TABLE `attendee` (
+  `id` int NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `contact` bigint DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+CREATE TABLE `patient` (
+  `id` int NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `contact` bigint DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`id`) REFERENCES `attendee` (`id`)
+)
+
+
+
+CREATE TABLE `Dslot` (
+  `id` int NOT NULL,
+  `SLOT` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+
+
+CREATE TABLE `doctor_cabin` (
+  `id` int NOT NULL,
+  `floor` varchar(50) DEFAULT NULL,
+  `cabin_no` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+
+
+CREATE TABLE `specialization` (
+  `id` int NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+
+
+CREATE TABLE `qualifications` (
+  `id` int NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)

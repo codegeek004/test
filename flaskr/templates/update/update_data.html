@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{%block title%}Edit data{%endblock%}
+{%block body%}
+<h1>Edit data</h1>
+<form method='POST' action="{{url_for('reception.update_data',id=id) }}">
+    <label for="patient_name">New Name</label>
+    <input type="text" id="patient_name" name="patient_name" value="{{reception_data[0]}}" maxlength="100">
+    <br>
+    <label for="patient_age">New Age</label>
+    <input type="number" id="patient_age" name="patient_age" value="{{reception_data[1]}}" min="1.0" max="200" maxlength="4">
+    <br>
+    <label for="patient_contact">New Contact</label>
+    <input type="number" id="patient_contact" name="patient_contact" value="{{reception_data[2]}}" min="6000000000" max="9999999999" maxlength="10">
+    <br>
+    <label for="patient_email">New Email</label>
+    <input type="email" id="patient_email" name="patient_email" value="{{reception_data[3]}}" maxlength="100">
+    <br>
+    <label for="patient_address">New Address</label>
+    <input type="text" id="patient_address" name="patient_address" value="{{reception_data[4]}}" maxlength="225">
+    <br><br>
+
+    <input type="submit" value="Save Changes">
+        {% for msg in get_flashed_messages() %}
+            <div class="flash-message">{{msg}}</div>
+        {%endfor%}
+            </div>
+</form>
+    <a class="backlink go-back-button" href="/reception" ><i class="bi bi-box-arrow-left"></i>&nbsp;Back to reception</a>
+
+    {% endblock %}
+
+ 
+

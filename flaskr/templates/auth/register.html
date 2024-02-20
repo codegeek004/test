@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth.css') }}">
+    </head>
+    <body>
+        <h1>Register</h1>
+        <form method='POST' action = "{{ url_for('auth.register') }}" id="registration-form">
+            <!--flash message-->
+            <div class="flash-messages">
+                {% for message in get_flashed_messages %}
+                <div class="flash-message">{{ msg }}</div>
+                {% endfor %}
+            </div>
+
+            {% if errors %}
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {%  endfor %}
+            </ul>
+            {% endif %}
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required maxlength="35" minlength="4">
+            <br><br>
+
+            <label for="password">PAssword</label>
+            <input type="text" id="password" name="password" required maxlength="35" minlength="2">
+            <br><br>
+
+            <input type="submit" value="register">
+        </form>
+        <p>Already have an account <a href="{{ url_for(auth.user_login_form) }}">Login user</a></p>
+    </body>
+    </html>
+

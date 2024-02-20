@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{%block title%}<h1>Add data</h1>{%endblock%}
+{%block body%}
+    
+    <form method = 'POST' action="{{url_for('reception.add_data')}}">
+        <label for="patient_name">Name</label>
+        <input type="text" id="patient_name" name="patient_name" required maxlength="100">
+        <br>
+        <label for="patient_age">Age</label>
+        <input type="number" id="patient_age" name="patient_age" required min="1.0" max="200" maxlength="4">
+        <br>
+        <label for="patient_contact">Contact</label>
+        <input type="number" id="patient_contact" name="patient_contact" required min="6000000000" max="9999999999" maxlength="10">
+        <br>
+        <label for="patient_email">Email</label>
+        <input type="email" id="patient_email" name="patient_email" required maxlength="200">
+        <br>
+        <label for="patient_address">Address</label>
+        <input type="text" id="patient_address" name="patient_address" required maxlength="225">
+        <input type="Submit" value="Add">
+        <div class="flash-messages">
+            {%for msg in get_flashed_messages() %}
+            <div class="flash-message">{{ msg }}</div>
+            {%endfor%}
+        </div>
+    </form>
+    {%endblock%}
+
+    <a class="backlink" href="/reception"> <i class="bi bi-box-arrow-left"></i>&nbsp;Back to reception</a>
+
+
+                    

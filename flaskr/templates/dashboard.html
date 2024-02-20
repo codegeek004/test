@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Reception Dashboard</h1>
+    <br><br>
+
+    <!--Flash message-->
+    <div class="flash-message">
+        {% for msg in get_flashed_messages %}
+        <div class="flash-message">{{ msg }}</div>
+        {% endfor %}
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-3" style="margin: 0px">
+                <div class="card bg-light" style="width: 350px">
+                    <div class="card-header">Total Patient</div>
+                    <div class="card-body">
+                        <p class="card-text">No of patient : {{ count }}</p>
+                        <a class="btn btn-success" href="{{url_for('reception.reception_table')}}"></a> &nbsp &nbsp &nbsp
+                    </div>
+                </div>
+            </div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    </div>
