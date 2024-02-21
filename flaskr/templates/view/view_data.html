@@ -1,10 +1,10 @@
-
-{%block body%}
+{% extends "base.html" %}
+{% block body %}
    
     <div class="flash-messages">
-        {%for message in get_flashed_messages()%}
+        {% for message in get_flashed_messages() %}
             <div class="flash-message success danger">{{ msg }}</div>
-        {%endfor%}
+        {% endfor %}
     </div>
     <table border="2">
         <thead>
@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-        {%for row in data %}
+        {% for row in data %}
         <tr>
             <td>{{ loop.index }}</td>
             <td>{{row[0]}}</td>
@@ -36,4 +36,4 @@
 
     </table>
     <a class="backlink" href="/reception/add"> <i class="bi bi-box-arrow-left"></i>&nbsp;Add Data</a>
-    {%endblock%}   
+    {% endblock %}   
