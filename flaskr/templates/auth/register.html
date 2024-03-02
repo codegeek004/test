@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,4 +39,5 @@
         <p>Already have an account <a href="{{ url_for(auth.user_login_form) }}">Login user</a></p>
     </body>
     </html>
+    {% endblock %}
 

@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,6 +45,8 @@
         <p>Don't have an account? <a href = "{{ url_for('auth.register') }}">Register user here</a></p>
     </body>
     </html>
+
+{% endblock %}
     
 
 

@@ -1,6 +1,7 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {%block title%}<h1>Add data</h1>{%endblock%}
 {%block body%}
+    {% block content %}
     
     <form method = 'POST' action="{{url_for('reception.add_data')}}">
         <label for="patient_name">Name</label>
@@ -27,6 +28,7 @@
     {%endblock%}
 
     <a class="backlink" href="/reception"> <i class="bi bi-box-arrow-left"></i>&nbsp;Back to reception</a>
+{% endblock %}
 
 
                     

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {%block title%}Edit data{%endblock%}
 {%block body%}
+{% block content %}
 <h1>Edit data</h1>
 <form method='POST' action="{{url_for('reception.update_data',id=id) }}">
     <label for="patient_name">New Name</label>
@@ -28,6 +29,7 @@
     <a class="backlink go-back-button" href="/reception" ><i class="bi bi-box-arrow-left"></i>&nbsp;Back to reception</a>
 
     {% endblock %}
+{% endblock %}
 
  
 

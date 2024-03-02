@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {%block title%}Delete data{%endblock%}
 {%block body%}
+    {% block content %}
     <h1>Delete data</h1>
     {%with messages=get_flashed_messages(with_categories=true) %}
     {%if messages%}
@@ -26,4 +27,4 @@
     {% endblock %}
         <a class="backlink" href="/reception"><i class="bi bi-box-arrow-left">Back to reception</i>&nbsp;</a>
 
-
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
+{% block content %}
    
     <div class="flash-messages">
         {% for message in get_flashed_messages() %}
@@ -35,5 +36,6 @@
 
 
     </table>
-    <a class="backlink" href="/reception/add"> <i class="bi bi-box-arrow-left"></i>&nbsp;Add Data</a>
-    {% endblock %}   
+    <button style="position: absolute;" class="backlink" href="/reception/add"> <i class="bi bi-box-arrow-left"></i>&nbsp;Add Data</a>
+    {% endblock %} 
+{% endblock %}  

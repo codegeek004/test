@@ -1,24 +1,31 @@
-from flask import random,render_template,redirect,Blueprint,url_for,flash,session
-import mysql.connector
+from flask import request,render_template, redirect, Blueprint, url_for, flash, session
+import mysql.connector 
 from db import db,cursor
 from werkzeug.security import generate_password_hash,check_password_hash
+from db import db,cursor
 from functools import wraps
 
 #Blueprint
 auth = Blueprint('auth',__name__)
 
 #register
+@auth.route('/register')
+def register_form():
+    return render_template('auth/register.html')
 
 @auth.route('/register',methods=['POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        confirm_password = request.form['confirm password']
+        confirm_password = request.form['confirm_password']
+        
         #if password and confirm password wont match
         if password != confirm_password:
             flash('Password does not match','danger')
             return redirect(url_for('auth.register_form'))
+        
+
         #check if the username already exists
         check_user_query = "SELECT username FROM user WHERE name = %s"
         cursor.execute(check_user_query, (username,))
@@ -27,6 +34,7 @@ def register():
         if existing_user:
             flash('username already exists. Use another username','danger')
             return redirect(url_for('auth.register_form'))
+ 
 
         #hash the password before storing it in the database
         hashed_password = generate_password_hash(password, method = 'pbkdf2:sha256')
@@ -43,6 +51,7 @@ def register():
         except mysql.db.connector.Error as e:
             db.rollback()
             flash(f'The registration failed: {e}','danger')
+    return render_template('auth/register.html')
 #login
 @auth.route('/userlogin')
 def user_login_form():
@@ -76,7 +85,6 @@ def logout():
     return render_template('index.html')
 
 #login required for authentication
-
 #the login required function
 def login_required(view):
     @wraps(view)
