@@ -2,11 +2,10 @@ from flask import request,render_template, redirect, Blueprint, url_for, flash, 
 import mysql.connector 
 from db import db,cursor
 from werkzeug.security import generate_password_hash,check_password_hash
-
 from functools import wraps
 
 #Blueprint
-auth = Blueprint('auth',__name__)
+auth=Blueprint('auth',__name__)
 
 #register
 @auth.route('/register')
@@ -103,6 +102,11 @@ def login_required(view):
 #Fetch count of tables
 cursor.execute("SELECT COUNT(*) FROM reception")
 count = cursor.fetchone()
+
+
+
+
+
 
 
 
