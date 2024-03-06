@@ -2,7 +2,7 @@ from flask import request,render_template, redirect, Blueprint, url_for, flash, 
 import mysql.connector 
 from db import db,cursor
 from werkzeug.security import generate_password_hash,check_password_hash
-from db import db,cursor
+
 from functools import wraps
 
 #Blueprint
@@ -48,10 +48,10 @@ def register():
             db.commit()
             flash('Registration successful. You can now login','Success')
             return redirect(url_for('auth.user_login_form'))
-        except mysql.db.connector.Error as e:
+        except mysql.connector.Error as e:
             db.rollback()
             flash(f'The registration failed: {e}','danger')
-    return render_template('auth/register.html')
+
 #login
 @auth.route('/userlogin')
 def user_login_form():
