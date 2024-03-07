@@ -104,13 +104,6 @@ cursor.execute("SELECT COUNT(*) FROM reception")
 count = cursor.fetchone()
 
 
-
-
-
-
-
-
-
 #Route for dashboard
 @auth.route('/dashboard')
 def dashboard():
